@@ -5,7 +5,7 @@ namespace LeetCode.Solutions
     /// <summary>
     /// https://leetcode.com/problems/two-sum/
     /// </summary>
-    public class TwoSumSolution
+    public class TwoSumProblem
     {
         public int[] TwoSum(int[] nums, int target)
         {

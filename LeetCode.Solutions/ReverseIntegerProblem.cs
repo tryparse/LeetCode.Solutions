@@ -5,7 +5,7 @@ using System.Text;
 namespace LeetCode.Solutions
 {
     // https://leetcode.com/problems/reverse-integer/
-    public class ReverseInteger
+    public class ReverseIntegerProblem
     {
         public int Reverse(int x)
         {

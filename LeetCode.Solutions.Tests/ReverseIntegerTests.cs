@@ -16,7 +16,7 @@ namespace LeetCode.Solutions.Tests
         [DataRow(1534236469, 0)]
         public void SolutionTest(int x, int expected)
         {
-            var solution = new ReverseInteger();
+            var solution = new ReverseIntegerProblem();
 
             var result = solution.Reverse(x);
 
