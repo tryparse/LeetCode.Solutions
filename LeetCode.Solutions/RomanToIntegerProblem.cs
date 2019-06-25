@@ -5,6 +5,9 @@ using System.Linq;
 
 namespace LeetCode.Solutions
 {
+    /// <summary>
+    /// https://leetcode.com/problems/roman-to-integer/
+    /// </summary>
     public class RomanToIntegerProblem
     {
         private readonly Dictionary<char, int> _romanNumbers = new Dictionary<char, int>
@@ -27,7 +30,14 @@ namespace LeetCode.Solutions
 
             if (s.Length == 1)
             {
-                return _romanNumbers[s[0]];
+                if (_romanNumbers.ContainsKey(s[0]))
+                {
+                    return _romanNumbers[s[0]];
+                }
+                else
+                {
+                    return 0;
+                }
             }
 
             var arr = s.ToUpper().ToCharArray();
