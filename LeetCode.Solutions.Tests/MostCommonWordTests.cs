@@ -1,19 +1,20 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
-using LeetCode.Solutions;
 
-[TestClass]
-public class MostCommonWordTests
+namespace LeetCode.Solutions.Tests
 {
-    [DataTestMethod]
-    //[DataRow("Bob hit a ball, the hit BALL flew far after it was hit.", new string[] { "hit" }, "ball")]
-    [DataRow("a, a, a, a, b,b,b,c, c", new string[] { "a" }, "b")]
-    public void MostCommonWordTest(string paragraph, string[] banned, string expected)
+    [TestClass]
+    public class MostCommonWordTests
     {
-        var solver = new MostCommonWordProblem();
+        [DataTestMethod]
+        //[DataRow("Bob hit a ball, the hit BALL flew far after it was hit.", new string[] { "hit" }, "ball")]
+        [DataRow("a, a, a, a, b,b,b,c, c", new string[] { "a" }, "b")]
+        public void MostCommonWordTest(string paragraph, string[] banned, string expected)
+        {
+            var solver = new MostCommonWordProblem();
 
-        var result = solver.MostCommonWord(paragraph, banned);
+            var result = solver.MostCommonWord(paragraph, banned);
 
-        Assert.AreEqual(expected, result);
+            Assert.AreEqual(expected, result);
+        }
     }
 }
