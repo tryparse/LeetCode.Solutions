@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 
-namespace LeetCode.Solutions
+namespace LeetCode.Solutions.LongestCommonPrefix
 {
     /// <summary>
     /// https://leetcode.com/problems/longest-common-prefix/
@@ -35,7 +35,7 @@ namespace LeetCode.Solutions
 
             var commonPrefix = string.Empty;
 
-            for (int i = 1; i <= shortest.Length; i++)
+            for (var i = 1; i <= shortest.Length; i++)
             {
                 var newPrefix = shortest.Substring(0, i);
 

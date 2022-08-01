@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace LeetCode.Solutions
+namespace LeetCode.Solutions.PalindromeNumber
 {
     // https://leetcode.com/problems/palindrome-number/
     public class PalindromeNumberProblem
@@ -20,7 +20,7 @@ namespace LeetCode.Solutions
                 var arr = x.ToString()
                     .ToCharArray();
 
-                for (int i = 0; i < arr.Length / 2; i++)
+                for (var i = 0; i < arr.Length / 2; i++)
                 {
                     if (arr[i] != arr[arr.Length - 1 - i])
                     {
@@ -46,7 +46,7 @@ namespace LeetCode.Solutions
             var str = x.ToString();
 
             var arr = str.ToCharArray();
-            Array.Reverse<char>(arr);
+            Array.Reverse(arr);
 
             var rev = new string(arr);
 

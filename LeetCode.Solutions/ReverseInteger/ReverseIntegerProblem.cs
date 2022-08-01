@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace LeetCode.Solutions
+namespace LeetCode.Solutions.ReverseInteger
 {
     // https://leetcode.com/problems/reverse-integer/
     public class ReverseIntegerProblem
@@ -26,7 +26,7 @@ namespace LeetCode.Solutions
 
             if (result.StartsWith("0"))
             {
-                result = result.Substring(1, result.Length - 1);
+                result = result[1..];
             }
 
             if (x < 0)

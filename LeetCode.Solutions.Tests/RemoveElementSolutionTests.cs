@@ -1,10 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using LeetCode.Solutions;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using LeetCode.Solutions.RemoveElement;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace LeetCode.Solutions.Tests
 {

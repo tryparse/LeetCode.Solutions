@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace LeetCode.Solutions
+namespace LeetCode.Solutions.MostCommonWord
 {
     /// <summary>
     /// https://leetcode.com/contest/weekly-contest-80/problems/most-common-word/

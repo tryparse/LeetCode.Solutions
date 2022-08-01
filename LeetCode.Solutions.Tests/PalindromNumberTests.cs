@@ -1,9 +1,10 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using LeetCode.Solutions.PalindromeNumber;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace LeetCode.Solutions.Tests
 {
     [TestClass]
-    public class PalindromenNumberTests
+    public class PalindromNumberTests
     {
         private readonly PalindromeNumberProblem solver = new PalindromeNumberProblem();
 

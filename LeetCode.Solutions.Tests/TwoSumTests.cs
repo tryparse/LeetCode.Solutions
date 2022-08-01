@@ -1,3 +1,4 @@
+using LeetCode.Solutions.TwoSum;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace LeetCode.Solutions.Tests

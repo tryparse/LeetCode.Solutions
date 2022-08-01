@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace LeetCode.Solutions
+namespace LeetCode.Solutions.TwoSum
 {
     /// <summary>
     /// https://leetcode.com/problems/two-sum/
@@ -11,11 +11,11 @@ namespace LeetCode.Solutions
         {
             var indicies = new int[2];
 
-            for (int i = 0; i < nums.Length; i++)
+            for (var i = 0; i < nums.Length; i++)
             {
-                int first = nums[i];
+                var first = nums[i];
 
-                for (int j = i; j < nums.Length; j++)
+                for (var j = i; j < nums.Length; j++)
                 {
                     if (i == j)
                     {

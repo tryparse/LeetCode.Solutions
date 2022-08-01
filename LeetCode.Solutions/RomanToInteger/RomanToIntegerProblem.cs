@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace LeetCode.Solutions
+namespace LeetCode.Solutions.RomanToInteger
 {
     /// <summary>
     /// https://leetcode.com/problems/roman-to-integer/
@@ -42,7 +42,7 @@ namespace LeetCode.Solutions
 
             var results = new Stack<int>();
 
-            foreach(var c in arr)
+            foreach (var c in arr)
             {
                 var value = _romanNumbers[c];
 

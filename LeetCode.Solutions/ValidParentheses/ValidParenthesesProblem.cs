@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace LeetCode.Solutions
+namespace LeetCode.Solutions.ValidParentheses
 {
     public class ValidParenthesesProblem
     {
