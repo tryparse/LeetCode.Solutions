@@ -4,29 +4,31 @@ using LeetCode.Solutions.Common.Dijkstra.Generic;
 
 namespace LeetCode.Solutions.Common.Dijkstra
 {
-    public class Node : INode<int>, IEntityWithID
+    public class Node : INode<int>
     {
         public int ID { get; }
 
         public int Distance { get; set; }
 
-        private readonly HashSet<IEdge<int>> _edges;
+        private readonly List<IEdge<int>> _edges;
 
         public IEnumerable<IEdge<int>> Edges => _edges;
 
         public Node(int id)
         {
             ID = id;
-            _edges = new HashSet<IEdge<int>>();
+            _edges = new List<IEdge<int>>();
+
+            SetInitialDistance();
         }
-        public void SetInitialDistance()
+        private void SetInitialDistance()
         {
             Distance = int.MaxValue;
         }
 
-        public bool TryAddEdge(IEdge<int> edge)
+        public void AddEdge(IEdge<int> edge)
         {
-            return _edges.Add(edge);
+            _edges.Add(edge);
         }
 
         public void SetDistanceToZero()

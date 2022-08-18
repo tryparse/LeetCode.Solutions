@@ -7,18 +7,18 @@ namespace LeetCode.Solutions.Common.Dijkstra.Generic
     public class DijkstraGraph<TLength>
         where TLength : IComparable<TLength>
     {
-        private readonly HashSet<INode<TLength>> _nodes;
-        private readonly HashSet<INode<TLength>> _visitedNodes;
-        private readonly HashSet<IEdge<TLength>> _edges;
+        private readonly List<INode<TLength>> _nodes;
+        private readonly Dictionary<int, INode<TLength>> _visitedNodes;
+        private readonly List<IEdge<TLength>> _edges;
 
         public IEnumerable<INode<TLength>> Nodes => _nodes;
         public IEnumerable<IEdge<TLength>> Edges => _edges;
 
         public DijkstraGraph(IEnumerable<INode<TLength>> nodes, IEnumerable<IEdge<TLength>> edges)
         {
-            _nodes = nodes != null ? nodes.ToHashSet() : new HashSet<INode<TLength>>();
-            _visitedNodes = new HashSet<INode<TLength>>();
-            _edges = edges != null ? edges.ToHashSet() : new HashSet<IEdge<TLength>>();
+            _nodes = nodes != null ? nodes.ToList() : new List<INode<TLength>>();
+            _visitedNodes = new Dictionary<int, INode<TLength>>();
+            _edges = edges != null ? edges.ToList() : new List<IEdge<TLength>>();
         }
 
         public DijkstraGraph() : this(null, null)
@@ -26,14 +26,13 @@ namespace LeetCode.Solutions.Common.Dijkstra.Generic
 
         }
 
-        public bool TryAddNode(INode<TLength> node) => _nodes.Add(node);
+        public void AddNode(INode<TLength> node) => _nodes.Add(node);
 
-        public bool TryAddEdge(IEdge<TLength> edge) => _edges.Add(edge);
+        public void AddEdge(IEdge<TLength> edge) => _edges.Add(edge);
 
         public void CalculateDistance(INode<TLength> startNode, DijkstraDistanceCalculationType calculationType = DijkstraDistanceCalculationType.ShortestPath)
         {
-            if (!_nodes.Any()
-                || !_edges.Any())
+            if (!_nodes.Any())
             {
                 return;
             }
@@ -43,66 +42,67 @@ namespace LeetCode.Solutions.Common.Dijkstra.Generic
                 startNode = _nodes.First();
             }
 
-            foreach (var node in _nodes)
-            {
-                node.SetInitialDistance();
-            }
-
             startNode.SetDistanceToZero();
 
             INode<TLength> currentNode = startNode;
+            var lastNodeId = _nodes.LastOrDefault().ID;
 
             while (_visitedNodes.Count < _nodes.Count)
             {
-                foreach (var edge in currentNode.Edges
-                    .OrderBy(e => e.Length))
+                var edges = currentNode.Edges
+                                    .OrderBy(e => e.Length);
+                ProcessNode(calculationType, currentNode, edges);
+
+                _visitedNodes.Add(currentNode.ID, currentNode);
+
+                if (currentNode.ID == lastNodeId)
                 {
-                    var neighbour = edge.Start.Equals(currentNode)
-                        ? edge.End
-                        : edge.Start;
-
-                    if (_visitedNodes.Contains(neighbour))
-                    {
-                        continue;
-                    }
-
-                    TLength newDistance;
-
-                    switch (calculationType)
-                    {
-                        case DijkstraDistanceCalculationType.MinEffort:
-                            {
-                                newDistance = edge.Length.CompareTo(currentNode.Distance) > 0
-                                    ? edge.Length
-                                    : currentNode.Distance;
-
-                                neighbour.Distance = neighbour.Distance.CompareTo(newDistance) > 0
-                                    ? newDistance
-                                    : neighbour.Distance;
-
-                                break;
-                            }
-                        default:
-                            {
-                                newDistance = currentNode.SumDistance(edge.Length);
-
-                                neighbour.Distance = neighbour.Distance.CompareTo(newDistance) > 0
-                                    ? newDistance
-                                    : neighbour.Distance;
-
-                                break;
-                            }
-                    }
-
-                    
+                    break;
                 }
 
-                _visitedNodes.Add(currentNode);
-
                 currentNode = _nodes
-                    .Where(x => !_visitedNodes.Contains(x))
+                    .Where(x => !_visitedNodes.ContainsKey(x.ID))
                     .OrderBy(x => x.Distance)
                     .FirstOrDefault();
+            }
+        }
+
+        private void ProcessNode(DijkstraDistanceCalculationType calculationType, INode<TLength> currentNode, IOrderedEnumerable<IEdge<TLength>> edges)
+        {
+            foreach (var edge in edges)
+            {
+                var neighbour = edge.Start.ID == currentNode.ID
+                    ? edge.End
+                    : edge.Start;
+
+                if (_visitedNodes.ContainsKey(neighbour.ID))
+                {
+                    continue;
+                }
+
+                TLength newDistance;
+
+                switch (calculationType)
+                {
+                    case DijkstraDistanceCalculationType.MinEffort:
+                        {
+                            newDistance = edge.Length.CompareTo(currentNode.Distance) > 0
+                                ? edge.Length
+                                : currentNode.Distance;
+
+                            break;
+                        }
+                    default:
+                        {
+                            newDistance = currentNode.SumDistance(edge.Length);
+
+                            break;
+                        }
+                }
+
+                neighbour.Distance = neighbour.Distance.CompareTo(newDistance) > 0
+                                ? newDistance
+                                : neighbour.Distance;
             }
         }
     }

@@ -16,8 +16,8 @@ namespace LeetCode.Solutions.Common.Dijkstra
             End = end;
             Length = length;
 
-            Start.TryAddEdge(this);
-            End.TryAddEdge(this);
+            Start.AddEdge(this);
+            End.AddEdge(this);
         }
     }
 }
