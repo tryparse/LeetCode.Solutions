@@ -14,6 +14,8 @@ namespace LeetCode.Solutions.Common.Dijkstra
 
         public IEnumerable<IEdge<int>> Edges => _edges;
 
+        public bool IsVisited { get; private set; } = false;
+
         public Node(int id)
         {
             ID = id;
@@ -39,6 +41,11 @@ namespace LeetCode.Solutions.Common.Dijkstra
         public int SumDistance(int add)
         {
             return Distance + add;
+        }
+
+        public void Visit()
+        {
+            IsVisited = true;
         }
     }
 }

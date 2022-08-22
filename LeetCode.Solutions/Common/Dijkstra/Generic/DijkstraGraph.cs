@@ -8,17 +8,16 @@ namespace LeetCode.Solutions.Common.Dijkstra.Generic
         where TLength : IComparable<TLength>
     {
         private readonly List<INode<TLength>> _nodes;
-        private readonly Dictionary<int, INode<TLength>> _visitedNodes;
         private readonly List<IEdge<TLength>> _edges;
+        private int _visitedNodeCount;
 
         public IEnumerable<INode<TLength>> Nodes => _nodes;
         public IEnumerable<IEdge<TLength>> Edges => _edges;
 
         public DijkstraGraph(IEnumerable<INode<TLength>> nodes, IEnumerable<IEdge<TLength>> edges)
         {
-            _nodes = nodes != null ? nodes.ToList() : new List<INode<TLength>>();
-            _visitedNodes = new Dictionary<int, INode<TLength>>();
-            _edges = edges != null ? edges.ToList() : new List<IEdge<TLength>>();
+            _nodes = nodes != null ? nodes.ToList() : new List<INode<TLength>>(10000);
+            _edges = edges != null ? edges.ToList() : new List<IEdge<TLength>>(10000 * 4);
         }
 
         public DijkstraGraph() : this(null, null)
@@ -30,7 +29,9 @@ namespace LeetCode.Solutions.Common.Dijkstra.Generic
 
         public void AddEdge(IEdge<TLength> edge) => _edges.Add(edge);
 
-        public void CalculateDistance(INode<TLength> startNode, DijkstraDistanceCalculationType calculationType = DijkstraDistanceCalculationType.ShortestPath)
+        public void CalculateDistance(
+            INode<TLength> startNode,
+            DijkstraDistanceCalculationType calculationType = DijkstraDistanceCalculationType.ShortestPath)
         {
             if (!_nodes.Any())
             {
@@ -47,35 +48,42 @@ namespace LeetCode.Solutions.Common.Dijkstra.Generic
             INode<TLength> currentNode = startNode;
             var lastNodeId = _nodes.LastOrDefault().ID;
 
-            while (_visitedNodes.Count < _nodes.Count)
+            while (_visitedNodeCount < _nodes.Count)
             {
-                var edges = currentNode.Edges
-                                    .OrderBy(e => e.Length);
-                ProcessNode(calculationType, currentNode, edges);
-
-                _visitedNodes.Add(currentNode.ID, currentNode);
+                ProcessNode(calculationType, currentNode);
+                SetNodeVisited(currentNode);
 
                 if (currentNode.ID == lastNodeId)
                 {
-                    break;
+                    return;
                 }
 
                 currentNode = _nodes
-                    .Where(x => !_visitedNodes.ContainsKey(x.ID))
+                    .Where(x => !x.IsVisited)
                     .OrderBy(x => x.Distance)
                     .FirstOrDefault();
             }
         }
 
-        private void ProcessNode(DijkstraDistanceCalculationType calculationType, INode<TLength> currentNode, IOrderedEnumerable<IEdge<TLength>> edges)
+        private void SetNodeVisited(INode<TLength> currentNode)
         {
+            currentNode.Visit();
+            _visitedNodeCount++;
+        }
+
+        private void ProcessNode(
+            DijkstraDistanceCalculationType calculationType,
+            INode<TLength> currentNode)
+        {
+            var edges = currentNode.Edges.OrderBy(e => e.Length);
+
             foreach (var edge in edges)
             {
                 var neighbour = edge.Start.ID == currentNode.ID
                     ? edge.End
                     : edge.Start;
 
-                if (_visitedNodes.ContainsKey(neighbour.ID))
+                if (neighbour.IsVisited)
                 {
                     continue;
                 }

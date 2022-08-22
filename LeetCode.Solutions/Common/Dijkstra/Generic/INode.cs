@@ -10,5 +10,7 @@ namespace LeetCode.Solutions.Common.Dijkstra.Generic
         void SetDistanceToZero();
         void AddEdge(IEdge<TLength> link);
         TLength SumDistance(TLength add);
+        bool IsVisited { get; }
+        void Visit();
     }
 }

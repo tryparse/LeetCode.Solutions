@@ -19,9 +19,9 @@ namespace LeetCode.Solutions.PathWithMinimumEfforts
 
             graph.CalculateDistance(null, DijkstraDistanceCalculationType.MinEffort);
 
-            var minEffort = graph.Nodes.Last().Distance;
+            var minEffort = graph.Nodes.LastOrDefault()?.Distance;
 
-            return minEffort;
+            return minEffort ?? 0;
         }
     }
 }

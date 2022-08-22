@@ -5,8 +5,8 @@ namespace LeetCode.Solutions.Common.Dijkstra.HeightGrid
     public class DijkstraHeightGridGraphVisualizer
     {
         private const char PADDING_CHAR = ' ';
-        private const int NODE_PADDING = 14;
-        private const int HORIZONTAL_LINK_PADDING = 5;
+        private const int NODE_PADDING = 8;
+        private const int HORIZONTAL_LINK_PADDING = 8;
         private const int VERTICAL_LINK_PADDING = NODE_PADDING + HORIZONTAL_LINK_PADDING;
 
         private readonly DijkstraHeightGridGraph _graph;
@@ -26,10 +26,10 @@ namespace LeetCode.Solutions.Common.Dijkstra.HeightGrid
                 {
                     var node = _graph[x, y];
 
-                    Console.Write((GetNodeInfo(node)
-                        + "("
-                        + GetNodeHeight(node) + GetDistance(node)
-                        + ")")
+                    Console.Write(GetNodeInfo(node)
+                        //+ "("
+                        //+ GetNodeHeight(node) + GetDistance(node)
+                        //+ ")")
                         .PadRight(NODE_PADDING, PADDING_CHAR));
 
                     var right = _graph.FindRightNeighbourIfExists(node);
