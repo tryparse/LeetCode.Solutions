@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using LeetCode.Solutions.Common.LinkedList;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace LeetCode.Solutions.MergeTwoSortedList.Tests
 {
