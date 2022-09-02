@@ -1,50 +1,8 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using LeetCode.Solutions.Common.LinkedList;
 
 namespace LeetCode.Solutions.MergeTwoSortedList
 {
-    public static class ListNodeExtensions
-    {
-        public static int[] ToArray(this ListNode listNode)
-        {
-            if (listNode == null)
-            {
-                return null;
-            }
-
-            var result = new List<int>();
-
-            do
-            {
-                result.Add(listNode.val);
-                listNode = listNode.next;
-            }
-            while (listNode != null);
-
-            return result.ToArray();
-        }
-
-        public static ListNode ToListNode(this int[] array)
-        {
-            if (array == null)
-            {
-                return null;
-            }
-
-            ListNode result = new ListNode(array[0]);
-            ListNode next = result;
-
-            foreach (var item in array.Skip(1))
-            {
-                next.next = new ListNode(item);
-                next = next.next;
-            }
-
-            return result;
-        }
-    }
-
     public class MergeTwoSortedListSolution
     {
         public ListNode MergeTwoLists(ListNode list1, ListNode list2)
