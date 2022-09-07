@@ -3,9 +3,11 @@ using System.Linq;
 
 namespace LeetCode.Solutions.PivotIndex
 {
+    /// <summary>
+    /// https://leetcode.com/problems/find-pivot-index/
+    /// </summary>
     public class PivotIndexSolution
     {
-        // [1,7,3,6,5,6]
         public int PivotIndex(int[] nums)
         {
             if (nums.Length == 0)

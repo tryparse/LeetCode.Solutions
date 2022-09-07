@@ -2,12 +2,13 @@
 
 namespace LeetCode.Solutions.RunningSumOf1DArray
 {
+    /// <summary>
+    /// https://leetcode.com/problems/running-sum-of-1d-array/
+    /// </summary>
     public class RunningSumSolution
     {
         public int[] RunningSum(int[] nums)
         {
-            // 1,2,3,4
-
             if (nums.Length == 0)
             {
                 return Array.Empty<int>();
@@ -19,7 +20,7 @@ namespace LeetCode.Solutions.RunningSumOf1DArray
 
             for (var i = 1; i < nums.Length; i++)
             {
-                result[i] = result[i-1] + nums[i];
+                result[i] = result[i - 1] + nums[i];
             }
 
             return result;
