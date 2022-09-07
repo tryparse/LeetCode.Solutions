@@ -11,9 +11,7 @@ namespace LeetCode.Solutions.Tests
         {
             var heights = new int[][] { new int[] { 1, 2, 2 }, new int[] { 3, 8, 2 }, new int[] { 5, 3, 5 } };
 
-            var solver = new PathWithMinimumEffort();
-
-            var result = solver.MinimumEffortPath(heights);
+            var result = new PathWithMinimumEffort().MinimumEffortPath(heights);
 
             Assert.AreEqual(2, result);
         }
@@ -23,9 +21,7 @@ namespace LeetCode.Solutions.Tests
         {
             var heights = new int[][] { new int[] { 1, 2, 3 }, new int[] { 3, 8, 4 }, new int[] { 5, 3, 5 } };
 
-            var solver = new PathWithMinimumEffort();
-
-            var result = solver.MinimumEffortPath(heights);
+            var result = new PathWithMinimumEffort().MinimumEffortPath(heights);
 
             Assert.AreEqual(1, result);
         }
@@ -42,9 +38,7 @@ namespace LeetCode.Solutions.Tests
                 new int[] { 1, 1, 1, 2, 1 }
             };
 
-            var solver = new PathWithMinimumEffort();
-
-            var result = solver.MinimumEffortPath(heights);
+            var result = new PathWithMinimumEffort().MinimumEffortPath(heights);
 
             Assert.AreEqual(0, result);
         }
@@ -61,9 +55,7 @@ namespace LeetCode.Solutions.Tests
                 new int[] { 6,  4, 10,  6, 10, 9, 4, 6 }
             };
 
-            var solver = new PathWithMinimumEffort();
-
-            var result = solver.MinimumEffortPath(heights);
+            var result = new PathWithMinimumEffort().MinimumEffortPath(heights);
 
             Assert.AreEqual(5, result);
         }
@@ -111,9 +103,7 @@ namespace LeetCode.Solutions.Tests
                 new int[] { 845918,839575,981769,73917,288134,226187,492237,232747,546526,236665,686569,700301,997230,48562,213622,343455,632295,124257,813073,723565,751597,277102,32708,988727,189542,933881,833787,210193,80012,901092,911900,860971,846299,805956,656475,729416,45030,605641,580386,25295,800706,587414,559623,66516,7556,789031,439887,699665,674362,919611,721201,30550,707838,70571,42932,929045,919826,876122,247391,122714,712458,919932,980286,38600,450696,501441,634414,780056,790825,379608,297714,773812,306110,868258,207645,77019,620937,606738,712016,76020,675029,988514,943377,907657,236877,415736,871289,466272}
             };
 
-            var solver = new PathWithMinimumEffort();
-
-            var result = solver.MinimumEffortPath(heights);
+            var result = new PathWithMinimumEffort().MinimumEffortPath(heights);
 
             Assert.IsTrue(result > 0);
         }
@@ -123,9 +113,7 @@ namespace LeetCode.Solutions.Tests
         {
             var heights = new int[][] { new int[] { 3 } };
 
-            var solver = new PathWithMinimumEffort();
-
-            var result = solver.MinimumEffortPath(heights);
+            var result = new PathWithMinimumEffort().MinimumEffortPath(heights);
 
             Assert.AreEqual(0, result);
         }
@@ -214,12 +202,9 @@ namespace LeetCode.Solutions.Tests
                 new int[] { 689863,205220,864777,785220,255018,974905,263995,7744,618874,267740,488271,419086,98465,940496,582602,480525,519317,629349,406658,132593,986513,315088,643023,927543,238873,645260,344202,114849,424501,984755,545495,447723,366661,389706,441023,17256,371137,958847,921810,405993,297173,109007,792223,927548,382990,178648,33412,483396,606819,539495,786866,446088,51011,271051,323004,744253,969386,116462,15508,656352,777776,447994,260876,353174,958195,383019,515560,673871,430767,872250,565662,566418,799613,608013,490084,68070,655309,40307}
             };
 
-            var solver = new PathWithMinimumEffort();
+            var result = new PathWithMinimumEffort().MinimumEffortPath(heights);
 
-            var result = solver.MinimumEffortPath(heights);
-
-            //Assert.AreEqual(0, result);
-            Assert.IsTrue(result > 0);
+            Assert.IsTrue(result >= 0);
         }
 
         [TestMethod]
@@ -267,12 +252,10 @@ namespace LeetCode.Solutions.Tests
                 new int[] { 987,477,870,818,481,442,285,103,661,608,586,188,897,140,906,558,931,71,660,512,46,929,111,306,619,277,265,669,280,712,693,336,909 }
             };
 
-            var solver = new PathWithMinimumEffort();
-
-            var result = solver.MinimumEffortPath(heights);
+            var result = new PathWithMinimumEffort().MinimumEffortPath(heights);
 
             //Assert.AreEqual(0, result);
-            Assert.IsTrue(result > 0);
+            Assert.IsTrue(result >= 0);
         }
     }
 }
