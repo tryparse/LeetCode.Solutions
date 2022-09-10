@@ -40,7 +40,12 @@ namespace LeetCode.Solutions.IsomorphicStrings
                 return false;
             }
 
-            var replaceDictionary = new Dictionary<char, char>();
+            if (s == t)
+            {
+                return true;
+            }
+
+            var replaceDictionary = new Dictionary<char, char>(s.Length);
 
             for (var i = 0; i < s.Length; i++)
             {
