@@ -16,30 +16,23 @@ namespace LeetCode.Solutions.Solutions.LinkedListCycle
                 return null;
             }
 
-            var dictionary = new Dictionary<int, ListNode>();
-
-            var current = head;
-            var index = 0;
-
-            dictionary.Add(index, current);
-
-            while (current.next != null)
+            var set = new HashSet<ListNode>
             {
-                if (dictionary.ContainsValue(current.next))
+                head
+            };
+
+            while (head.next != null)
+            {
+                if (set.Contains(head.next))
                 {
-                    return current.next;
+                    return head.next;
                 }
 
-                dictionary.Add(++index, current.next);
-                current = current.next;
+                set.Add(head.next);
+                head = head.next;
             }
 
-            if (dictionary[index].next == null)
-            {
-                return null;
-            }
-
-            return dictionary[index].next;
+            return null;
         }
     }
 }
