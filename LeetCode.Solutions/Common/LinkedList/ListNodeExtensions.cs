@@ -24,7 +24,7 @@ namespace LeetCode.Solutions.Common.LinkedList
             return result.ToArray();
         }
 
-        public static ListNode ToListNode(this int[] array)
+        public static ListNode ToLinkedList(this int[] array)
         {
             if (array == null)
             {

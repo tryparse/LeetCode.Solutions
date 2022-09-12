@@ -29,7 +29,7 @@ namespace LeetCode.Solutions.MergeTwoSortedList
             return union
                 .OrderBy(x => x)
                 .ToArray()
-                .ToListNode();
+                .ToLinkedList();
         }
     }
 }

@@ -10,7 +10,7 @@ namespace LeetCode.Solutions.Solutions.ReverseLinkedList.Tests
         [TestMethod]
         public void ReverseListTest1()
         {
-            var linkedList = new int[] { 1, 2, 3, 4, 5 }.ToListNode();
+            var linkedList = new int[] { 1, 2, 3, 4, 5 }.ToLinkedList();
             var result = new ReverseLinkedListSolution()
                 .ReverseList(linkedList)
                 .ToArray();
@@ -21,7 +21,7 @@ namespace LeetCode.Solutions.Solutions.ReverseLinkedList.Tests
         [TestMethod]
         public void ReverseListTest2()
         {
-            var linkedList = new int[] { 1, 2 }.ToListNode();
+            var linkedList = new int[] { 1, 2 }.ToLinkedList();
             var result = new ReverseLinkedListSolution()
                 .ReverseList(linkedList)
                 .ToArray();
@@ -32,7 +32,7 @@ namespace LeetCode.Solutions.Solutions.ReverseLinkedList.Tests
         [TestMethod]
         public void ReverseListTest3()
         {
-            var linkedList = new int[0].ToListNode();
+            var linkedList = new int[0].ToLinkedList();
             var result = new ReverseLinkedListSolution()
                 .ReverseList(linkedList)
                 .ToArray();
