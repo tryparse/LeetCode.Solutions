@@ -24,6 +24,13 @@ namespace LeetCode.Solutions.Common.LinkedList
             return result.ToArray();
         }
 
+        public static ListNode[] ToArrayOfNodes(this ListNode listNode)
+        {
+            var result = new List<ListNode>();
+
+            return result.ToArray();
+        }
+
         public static ListNode ToLinkedList(this int[] array)
         {
             if (array == null)
@@ -46,6 +53,41 @@ namespace LeetCode.Solutions.Common.LinkedList
             }
 
             return result;
+        }
+
+        public static ListNode[] ToLinkedListWithCycle(this int[] nums, int cyclePosition)
+        {
+            if (nums == null)
+            {
+                return null;
+            }
+
+            if (nums.Length == 0)
+            {
+                return null;
+            }
+
+            var array = new ListNode[nums.Length];
+
+            ListNode head = new(nums[0]);
+            ListNode next = head;
+            array[0] = next;
+
+            var index = 0;
+
+            foreach (var item in nums.Skip(1))
+            {
+                next.next = new ListNode(item);
+                next = next.next;
+                array[++index] = next;
+            }
+
+            if (cyclePosition >= 0)
+            {
+                array[^1].next = array[cyclePosition];
+            }
+
+            return array;
         }
     }
 }
