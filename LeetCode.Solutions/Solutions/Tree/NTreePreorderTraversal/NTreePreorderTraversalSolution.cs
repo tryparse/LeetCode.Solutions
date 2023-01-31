@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using LeetCode.Solutions.Common.NTree;
 
-namespace LeetCode.Solutions.Solutions.NaryTreePreorderTraversal
+namespace LeetCode.Solutions.Solutions.Tree.NTreePreorderTraversal
 {
     /// <summary>
     /// https://leetcode.com/problems/n-ary-tree-preorder-traversal/
