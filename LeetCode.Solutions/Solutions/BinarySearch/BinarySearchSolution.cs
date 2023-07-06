@@ -1,14 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LeetCode.Solutions.Solutions.BinarySearch
 {
+    /// <summary>
+    /// https://leetcode.com/problems/binary-search/
+    /// </summary>
     public class BinarySearchSolution
     {
-        public int Search(int[] nums, int target, int offset = 0)
+        private int _offset = 0;
+
+        public int Search(int[] nums, int target)
         {
             if (nums == null
                 || nums.Length == 0)
@@ -18,7 +19,7 @@ namespace LeetCode.Solutions.Solutions.BinarySearch
 
             if (nums.Length == 1)
             {
-                return nums[0] == target ? 0 + offset : -1;
+                return nums[0] == target ? _offset : -1;
             }
 
             var middleIndex = nums.Length / 2;
@@ -26,21 +27,35 @@ namespace LeetCode.Solutions.Solutions.BinarySearch
 
             if (middle == target)
             {
-                return middleIndex + offset;
+                return middleIndex + _offset;
             }
             
             if (middle > target)
             {
-                var left = new int[nums.Length - middleIndex];
-                Array.Copy(nums, left, middleIndex);
-                return Search(left, target) + offset;
+                return ProcessLeftHalf(nums, target, middleIndex);
             }
             else
             {
-                var right = new int[nums.Length - middleIndex - 1];
-                Array.Copy(nums, middleIndex + 1, right, 0, nums.Length - middleIndex - 1);
-                return Search(right, target, middleIndex);
+                return ProcessRightHalf(nums, target, middleIndex);
             }
+        }
+
+        private int ProcessRightHalf(int[] nums, int target, int middleIndex)
+        {
+            var right = new int[nums.Length - middleIndex - 1];
+            Array.Copy(nums, middleIndex + 1, right, 0, nums.Length - middleIndex - 1);
+
+            _offset += middleIndex + 1;
+
+            return Search(right, target);
+        }
+
+        private int ProcessLeftHalf(int[] nums, int target, int middleIndex)
+        {
+            var left = new int[nums.Length - middleIndex - (nums.Length % 2 == 0 ? 0 : 1)];
+            Array.Copy(nums, left, middleIndex);
+
+            return Search(left, target);
         }
     }
 }
