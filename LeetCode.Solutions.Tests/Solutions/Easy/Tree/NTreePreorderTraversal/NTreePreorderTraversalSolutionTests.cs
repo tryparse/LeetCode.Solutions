@@ -3,7 +3,7 @@ using LeetCode.Solutions.Common.NTree;
 using LeetCode.Solutions.Solutions.Easy.Tree.NTreePreorderTraversal;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace LeetCode.Solutions.Tests.Solutions.Easy.NTreePreorderTraversal
+namespace LeetCode.Solutions.Tests.Solutions.Easy.Tree.NTreePreorderTraversal
 {
     [TestClass()]
     public class NTreePreorderTraversalSolutionTests

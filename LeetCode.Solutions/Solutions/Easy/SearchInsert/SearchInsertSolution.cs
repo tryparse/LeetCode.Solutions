@@ -17,12 +17,43 @@ namespace LeetCode.Solutions.Solutions.Easy.SearchInsert
     {
         public int SearchInsert(int[] nums, int target)
         {
-            // Input: nums = [1,3,5,6], target = 5
-            // Output: 2
-            
-            throw new NotImplementedException();
+            if (nums.Length == 0)
+            {
+                return 0;
+            }
+            else if (nums.Length == 1)
+            {
+                return nums[0] >= target ? 0 : 1;
+            }
+
+            var leftIndex = 0;
+            var rightIndex = nums.Length - 1;
+            var middleIndex = GetMiddleIndex(leftIndex, rightIndex);
+
+            while (leftIndex < rightIndex)
+            {
+                if (nums[middleIndex] == target)
+                {
+                    return middleIndex;
+                }
+
+                if (nums[middleIndex] > target)
+                {
+                    rightIndex = middleIndex;
+                }
+                else
+                {
+                    leftIndex = middleIndex + 1;
+                }
+
+                middleIndex = GetMiddleIndex(leftIndex, rightIndex);
+            }
+
+            return nums[middleIndex] == target
+                ? middleIndex
+                : nums[middleIndex] >= target ? middleIndex : middleIndex + 1;
         }
 
-
+        private int GetMiddleIndex(int leftIndex, int rightIndex) => (leftIndex + rightIndex) / 2;
     }
 }
