@@ -1,35 +1,31 @@
-﻿using LeetCode.Solutions.Common.LinkedList;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using LeetCode.Solutions.Common.LinkedList;
 
 namespace LeetCode.Solutions.Solutions.Medium.LinkedListCycle
 {
     public class LinkedListCycle2Solution
     {
-        public ListNode DetectCycle(ListNode head)
+        public ListNode<int> DetectCycle(ListNode<int> head)
         {
             if (head == null)
             {
                 return null;
             }
 
-            var set = new HashSet<ListNode>
+            var set = new HashSet<ListNode<int>>
             {
                 head
             };
 
-            while (head.next != null)
+            while (head.Next != null)
             {
-                if (set.Contains(head.next))
+                if (set.Contains(head.Next))
                 {
-                    return head.next;
+                    return head.Next;
                 }
 
-                set.Add(head.next);
-                head = head.next;
+                set.Add(head.Next);
+                head = head.Next;
             }
 
             return null;

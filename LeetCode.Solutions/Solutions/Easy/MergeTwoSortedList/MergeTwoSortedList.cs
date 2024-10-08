@@ -1,11 +1,11 @@
 ﻿using System.Linq;
 using LeetCode.Solutions.Common.LinkedList;
 
-namespace LeetCode.Solutions.MergeTwoSortedList
+namespace LeetCode.Solutions.Solutions.Easy.MergeTwoSortedList
 {
     public class MergeTwoSortedListSolution
     {
-        public ListNode MergeTwoLists(ListNode list1, ListNode list2)
+        public ListNode<int> MergeTwoLists(ListNode<int> list1, ListNode<int> list2)
         {
             if (list1 == null)
             {

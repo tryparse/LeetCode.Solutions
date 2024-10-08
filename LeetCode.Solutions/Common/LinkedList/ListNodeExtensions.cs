@@ -1,37 +1,38 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace LeetCode.Solutions.Common.LinkedList
 {
     public static class ListNodeExtensions
     {
-        public static int[] ToArray(this ListNode listNode)
+        public static T[] ToArray<T>(this ListNode<T> listNode)
         {
             if (listNode == null)
             {
-                return null;
+                return [];
             }
 
-            var result = new List<int>();
+            var result = new List<T>();
 
             do
             {
-                result.Add(listNode.val);
-                listNode = listNode.next;
+                result.Add(listNode.Value);
+                listNode = listNode.Next;
             }
             while (listNode != null);
 
-            return result.ToArray();
+            return [.. result];
         }
 
-        public static ListNode[] ToArrayOfNodes(this ListNode listNode)
+        public static ListNode<T>[] ToArrayOfNodes<T>(this ListNode<T> listNode)
         {
-            var result = new List<ListNode>();
+            var result = new List<ListNode<T>>();
 
-            return result.ToArray();
+            return [.. result];
         }
 
-        public static ListNode ToLinkedList(this int[] array)
+        public static ListNode<T> ToLinkedList<T>(this T[] array)
         {
             if (array == null)
             {
@@ -43,48 +44,48 @@ namespace LeetCode.Solutions.Common.LinkedList
                 return null;
             }
 
-            ListNode result = new ListNode(array[0]);
-            ListNode next = result;
+            ListNode<T> result = new ListNode<T>(array[0]);
+            ListNode<T> next = result;
 
             foreach (var item in array.Skip(1))
             {
-                next.next = new ListNode(item);
-                next = next.next;
+                next.Next = new ListNode<T>(item);
+                next = next.Next;
             }
 
             return result;
         }
 
-        public static ListNode[] ToLinkedListWithCycle(this int[] nums, int cyclePosition)
+        public static ListNode<T>[] ToLinkedListWithCycle<T>(this T[] items, int cyclePosition)
         {
-            if (nums == null)
+            if (items == null)
             {
                 return null;
             }
 
-            if (nums.Length == 0)
+            if (items.Length == 0)
             {
                 return null;
             }
 
-            var array = new ListNode[nums.Length];
+            var array = new ListNode<T>[items.Length];
 
-            ListNode head = new(nums[0]);
-            ListNode next = head;
+            ListNode<T> head = new(items[0]);
+            ListNode<T> next = head;
             array[0] = next;
 
             var index = 0;
 
-            foreach (var item in nums.Skip(1))
+            foreach (var item in items.Skip(1))
             {
-                next.next = new ListNode(item);
-                next = next.next;
+                next.Next = new ListNode<T>(item);
+                next = next.Next;
                 array[++index] = next;
             }
 
             if (cyclePosition >= 0)
             {
-                array[^1].next = array[cyclePosition];
+                array[^1].Next = array[cyclePosition];
             }
 
             return array;

@@ -1,18 +1,8 @@
 ﻿namespace LeetCode.Solutions.Common.LinkedList
 {
-    public class ListNode
+    public class ListNode<T>(T value = default, ListNode<T> next = null)
     {
-        public int val;
-        public ListNode next;
-        public ListNode(int val = 0, ListNode next = null)
-        {
-            this.val = val;
-            this.next = next;
-        }
-
-        public override string ToString()
-        {
-            return val.ToString();
-        }
+        public T Value { get; set; } = value;
+        public ListNode<T> Next { get; set; } = next;
     }
 }

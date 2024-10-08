@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using LeetCode.Solutions.Common.LinkedList;
 
 namespace LeetCode.Solutions.Solutions.Easy.MiddleOfTheLinkedList
 {
     public class MiddleOfTheLinkedListSolution
     {
-        public ListNode MiddleNode(ListNode head)
+        public ListNode<int> MiddleNode(ListNode<int> head)
         {
             //var array = head.ToArray();
 
@@ -16,18 +15,18 @@ namespace LeetCode.Solutions.Solutions.Easy.MiddleOfTheLinkedList
 
             //return result.ToLinkedList();
 
-            var stack = new Stack<ListNode>();
+            var stack = new Stack<ListNode<int>>();
 
             var current = head;
             var count = 1;
 
             stack.Push(current);
 
-            while (current.next != null)
+            while (current.Next != null)
             {
-                stack.Push(current.next);
+                stack.Push(current.Next);
                 count++;
-                current = current.next;
+                current = current.Next;
             }
 
             var middleIndex = count % 2 == 0 ? count / 2 - 1 : count / 2;

@@ -12,8 +12,8 @@ namespace LeetCode.Solutions.Tests.Solutions.Easy.MergeTwoSortedList
         {
             var solver = new MergeTwoSortedListSolution();
 
-            var list1 = new ListNode(1, new ListNode(2, new ListNode(4)));
-            var list2 = new ListNode(1, new ListNode(3, new ListNode(4)));
+            var list1 = new ListNode<int>(1, new ListNode<int>(2, new ListNode<int>(4)));
+            var list2 = new ListNode<int>(1, new ListNode<int>(3, new ListNode<int>(4)));
 
             var result = solver.MergeTwoLists(list1, list2)
                 .ToArray();
@@ -28,8 +28,8 @@ namespace LeetCode.Solutions.Tests.Solutions.Easy.MergeTwoSortedList
         {
             var solver = new MergeTwoSortedListSolution();
 
-            ListNode list1 = null;
-            ListNode list2 = null;
+            ListNode<int> list1 = null;
+            ListNode<int> list2 = null;
 
             var result = solver.MergeTwoLists(list1, list2).ToArray();
 
@@ -43,12 +43,12 @@ namespace LeetCode.Solutions.Tests.Solutions.Easy.MergeTwoSortedList
         {
             var solver = new MergeTwoSortedListSolution();
 
-            ListNode list1 = null;
-            ListNode list2 = new ListNode();
+            ListNode<int> list1 = null;
+            ListNode<int> list2 = new ListNode<int>();
 
             var result = solver.MergeTwoLists(list1, list2).ToArray();
 
-            var expected = new ListNode().ToArray();
+            var expected = new ListNode<int>().ToArray();
 
             CollectionAssert.AreEqual(expected, result);
         }

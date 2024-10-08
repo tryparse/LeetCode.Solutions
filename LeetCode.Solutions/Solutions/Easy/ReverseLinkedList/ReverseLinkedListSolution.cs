@@ -1,45 +1,43 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using LeetCode.Solutions.Common.LinkedList;
 
-namespace LeetCode.Solutions.Solutions.ReverseLinkedList
+namespace LeetCode.Solutions.Solutions.Easy.ReverseLinkedList
 {
     public class ReverseLinkedListSolution
     {
-        public ListNode ReverseList(ListNode head)
+        public ListNode<int> ReverseList(ListNode<int> head)
         {
-            if (head?.next == null)
+            if (head?.Next == null)
             {
                 return head;
             }
 
-            var stack = new Stack<ListNode>();
+            var stack = new Stack<ListNode<int>>();
 
             var node = head;
             stack.Push(node);
 
-            while(node.next != null)
+            while (node.Next != null)
             {
-                stack.Push(node.next);
-                node = node.next;
+                stack.Push(node.Next);
+                node = node.Next;
             }
 
             var reverseHead = stack.Pop();
 
             if (stack.Count > 0)
             {
-                reverseHead.next = stack.Pop();
+                reverseHead.Next = stack.Pop();
 
-                node = reverseHead.next;
+                node = reverseHead.Next;
 
                 while (stack.Count > 0)
                 {
-                    node.next = stack.Pop();
-                    node = node.next;
+                    node.Next = stack.Pop();
+                    node = node.Next;
                 }
 
-                node.next = null;
+                node.Next = null;
             }
 
             return reverseHead;
