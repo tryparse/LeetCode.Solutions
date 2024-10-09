@@ -1,5 +1,5 @@
 ﻿using LeetCode.Solutions.Common.LinkedList;
-using LeetCode.Solutions.MergeTwoSortedList;
+using LeetCode.Solutions.Solutions.Easy.MergeTwoSortedList;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace LeetCode.Solutions.Tests.Solutions.Easy.MergeTwoSortedList

@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 using LeetCode.Solutions.Common.LinkedList;
-using LeetCode.Solutions.Solutions.ReverseLinkedList;
+using LeetCode.Solutions.Solutions.Easy.ReverseLinkedList;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace LeetCode.Solutions.Tests.Solutions.Easy.ReverseLinkedList
