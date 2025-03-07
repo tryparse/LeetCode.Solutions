@@ -12,7 +12,7 @@ namespace DebugSolutionRunner
 
             var root = input.ToTree();
 
-            Console.WriteLine("press any key");
+            Console.WriteLine("press any key...");
             Console.ReadKey(true);
         }
     }
