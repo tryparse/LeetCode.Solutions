@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace LeetCode.Solutions.TwoSum
+﻿namespace LeetCode.Solutions.TwoSum
 {
     /// <summary>
     /// https://leetcode.com/problems/two-sum/

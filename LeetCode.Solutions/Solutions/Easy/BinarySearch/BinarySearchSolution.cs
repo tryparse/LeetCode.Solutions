@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace LeetCode.Solutions.Solutions.Easy.BinarySearch
+﻿namespace LeetCode.Solutions.Solutions.Easy.BinarySearch
 {
     /// <summary>
     /// https://leetcode.com/problems/binary-search/

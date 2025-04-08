@@ -5,7 +5,7 @@
         public void Add(T value)
         {
             var addedHead = AddHeadIfNull(ref head, value);
-            
+
             if (!addedHead)
             {
                 var tail = GetLastItem(head);

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 
 namespace LeetCode.Solutions.Solutions.Easy.LengthOfLastWord
 {
@@ -10,7 +9,7 @@ namespace LeetCode.Solutions.Solutions.Easy.LengthOfLastWord
             var words = s
                 .TrimEnd()
                 .Split(' ', StringSplitOptions.RemoveEmptyEntries);
-           
+
             return words[^1].Length;
         }
     }

@@ -1,9 +1,5 @@
-﻿using LeetCode.Solutions.Common.BinaryTree;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using LeetCode.Solutions.Common.BinaryTree;
 
 namespace LeetCode.Solutions.Solutions.Tree.BinaryTree.BinaryTreeLevelOrderTraversal
 {
@@ -20,7 +16,7 @@ namespace LeetCode.Solutions.Solutions.Tree.BinaryTree.BinaryTreeLevelOrderTrave
             {
                 return levels.ToArray();
             }
-            
+
             if (root.left == null
                 && root.right == null)
             {

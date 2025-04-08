@@ -20,7 +20,7 @@ namespace LeetCode.Solutions.Common.Dijkstra.HeightGrid
                 for (var i = 0; i < width; i++)
                 {
                     var node = new HeightGridNode(i + j * width, i, j, grid[j][i]);
-                        
+
                     if (!_nodesDict.ContainsKey(i))
                     {
                         _nodesDict.Add(i, new Dictionary<int, HeightGridNode>());
