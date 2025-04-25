@@ -7,9 +7,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Solutions\Easy\MergeStringsAlternately\**" />
-    <EmbeddedResource Remove="Solutions\Easy\MergeStringsAlternately\**" />
-    <None Remove="Solutions\Easy\MergeStringsAlternately\**" />
+    <Compile Remove="Easy\MergeStringsAlternately\**" />
+    <EmbeddedResource Remove="Easy\MergeStringsAlternately\**" />
+    <None Remove="Easy\MergeStringsAlternately\**" />
   </ItemGroup>
 
   <ItemGroup>
