@@ -1,4 +1,4 @@
-﻿using LeetCode.Solutions.Solutions.Easy.PalindromeNumber;
+﻿using LeetCode.Solutions.Solutions.Easy;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace LeetCode.Solutions.Tests.Solutions.Easy
