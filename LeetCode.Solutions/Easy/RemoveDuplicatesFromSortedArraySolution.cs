@@ -1,4 +1,6 @@
-﻿namespace LeetCode.Solutions.Easy
+﻿using System.Linq;
+
+namespace LeetCode.Solutions.Easy
 {
     /// <summary>
     /// https://leetcode.com/problems/remove-duplicates-from-sorted-array/
@@ -7,7 +9,7 @@
     {
         public int RemoveDuplicates(int[] nums)
         {
-            return 0;
+            int mem = nums[0];
         }
     }
 }
