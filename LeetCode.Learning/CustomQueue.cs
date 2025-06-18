@@ -2,34 +2,158 @@
 {
     public class CustomQueue<T>
     {
-        private readonly T[] _array;
-        private readonly int _headPointer;
-        private readonly int _tailPointer;
-        private readonly int _capacity;
-        private readonly bool _fixedSize;
+        private T[] _array;
+        private int _dequeuePointer;
+        private int _enqueuePointer;
+        private int _count;
 
-        public int Count => _array.Length;
+        private readonly int _capacity;
+        private readonly bool _fixedCapacity;
+
+        public int Count => _count;
 
         public CustomQueue(int capacity, bool fixedSize = false)
         {
             _capacity = capacity;
             _array = new T[capacity];
-            _fixedSize = fixedSize;
-            
-            _headPointer = 0;
-            _tailPointer = 0;
+            _fixedCapacity = fixedSize;
+
+            _dequeuePointer = 0;
+            _enqueuePointer = 0;
         }
 
         public bool Enqueue(T item)
         {
-            if (_fixedSize)
+            /*  0
+             * [1][2][3][4][5]
+             *              4
+             * count=5
+             * capacity=5
+             */
+
+            if (_fixedCapacity)
             {
-                if 
+                if (_count == _capacity)
+                {
+                    return false;
+                }
+
+                _array[_enqueuePointer] = item;
+                _enqueuePointer++;
+                _count++;
+
+                if (_enqueuePointer == _capacity)
+                {
+                    _enqueuePointer = 0;
+                }
+
+                return true;
+            }
+
+            if (_count == _capacity)
+            {
+                ExtendArray();
+            }
+
+            EnqueueInternal(item);
+
+            return true;
+        }
+
+        private void EnqueueInternal(T item)
+        {
+            _array[_enqueuePointer] = item;
+            _enqueuePointer++;
+            _count++;
+        }
+
+        public bool Dequeue(out T? result)
+        {
+            if (_count <= 0)
+            {
+                result = default;
+                return false;
+            }
+
+            result = _array[_dequeuePointer];
+            _dequeuePointer++;
+            _count--;
+
+            if (_dequeuePointer == _capacity)
+            {
+                _dequeuePointer = 0;
+            }
+
+            return true;
+        }
+
+        private void ExtendArray()
+        {
+            var extendedCapacity = _capacity + _capacity / 2;
+            var extendedArray = new T[extendedCapacity];
+            Array.Copy(_array, extendedArray, _array.Length);
+            _array = extendedArray;
+        }
+    }
+
+    public class MyCircularQueue
+    {
+        private int[] _array;
+
+        private int _enqueueIndex = 0;
+        private int _dequeueIndex = 0;
+
+        public MyCircularQueue(int k)
+        {
+            _array = new int[k];
+            Array.Fill(_array, -1);
+        }
+
+        public bool EnQueue(int value)
+        {
+            _enqueueIndex++;
+
+            if (_enqueueIndex == _array.Length)
+            {
+                _enqueueIndex = 0;
+            }
+
+
+
+            _array[_enqueueIndex] = value;
+
+            return true;
+        }
+
+        public bool DeQueue()
+        {
+            _array[++_dequeueIndex] = -1;
+        }
+
+        public int Front()
+        {
+            if (IsEmpty())
+            {
+                return -1;
             }
         }
 
-        public T Dequeue()
+        public int Rear()
         {
+            if (IsEmpty())
+            {
+                return -1;
+            }
+        }
+
+        public bool IsEmpty()
+        {
+            return _enqueueIndex == _dequeueIndex;
+        }
+
+        public bool IsFull()
+        {
+
         }
     }
 }
