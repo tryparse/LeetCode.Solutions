@@ -97,4 +97,40 @@
 
         public bool IsFull() => _count == _array.Length;
     }
+
+    public class LinkedListQueue<T>
+    {
+        private class Node
+        {
+            public required T Value;
+            public Node? Next;
+        }
+
+        private Node? _head;
+        private Node? _tail;
+
+        public void Enqueue(T value)
+        {
+            if (_head is null)
+            {
+                _head = new Node { Value = value };
+                _tail = _head;
+            }
+            else
+            {
+                _tail.Next = new Node { Value = value };
+                _tail = _tail.Next;
+            }
+        }
+
+        public T Dequeue()
+        {
+            if (_tail is null)
+            {
+                return default;
+            }
+
+            var value = _tail.Value;
+        }
+    }
 }
